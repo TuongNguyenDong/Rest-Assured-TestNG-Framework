@@ -102,7 +102,7 @@ public class PlaylistTests extends BaseTest {
     @Story("Create a playlist story")
     @Test
     public void ShouldNotBeAbleToCreateAPIPlayListWithExpiredToken() {
-        String invalid_token = "12345";
+        String invalid_token = "1234sdfg";
 
         Playlist requestplaylist = playlistBuilder(generateName(),generateDescription(),false);
 
