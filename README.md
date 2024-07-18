@@ -11,7 +11,7 @@ This project uses the following languages and frameworks:
 
 - **`Java 11`** as the programming language
 - **`TestNG`** to support the test creation
-- **`Rest Assured`** `(version 5.3.0)` is a web browser automation framework using Java binding.
+- **`Rest Assured`** `(version 5.3.0)` is a Java library used for testing RESTful APIs.
 - **`Hamcrest`**  is a Java library for writing matchers, which allows flexible checking of values in tests.
 - **`Allure Reports`** as the testing report strategy
 - **`Jackson API`** is a Java library for handling JSON data, supports features like serialization, deserialization.
