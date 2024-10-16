@@ -102,6 +102,8 @@ public class PlaylistTests extends BaseTest {
 //        assertThat(responsePlaylist.getName(), equalTo(requestplaylist.getName()));
 //        assertThat(responsePlaylist.getDescription(), equalTo(requestplaylist.getDescription()));
 //        assertThat(responsePlaylist.getPublic(), equalTo(requestplaylist.getPublic()));
+        // assertThat(responsePlaylist.getDescription(), equalTo(requestplaylist.getDescription()));
+//        assertThat(responsePlaylist.getPublic(), equalTo(requestplaylist.getPublic()));
 
     }
     @Test
