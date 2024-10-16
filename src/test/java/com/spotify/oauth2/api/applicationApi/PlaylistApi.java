@@ -32,9 +32,17 @@ public class PlaylistApi {
         return RestResource.get(PLAYLIST + "/" + playlistId, getToken());
 
     }
+
+    @Step
+    public static Response get () {
+        return RestResource.get(USERS + "/" , getToken());
+
+    }
     @Step
     public static Response update (String playlistId,Playlist requestplaylist) {
         return RestResource.update(PLAYLIST + "/" + playlistId, getToken(), requestplaylist);
 
     }
+
+
 }
