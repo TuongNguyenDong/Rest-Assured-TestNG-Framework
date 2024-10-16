@@ -2,16 +2,12 @@ package com.spotify.oauth2.tests;
 
 import com.spotify.oauth2.api.StatusCode;
 import com.spotify.oauth2.api.applicationApi.PlaylistApi;
-import com.spotify.oauth2.pojo.CurrentUserPlaylist;
 import com.spotify.oauth2.pojo.Error;
-import com.spotify.oauth2.pojo.Item;
 import com.spotify.oauth2.pojo.Playlist;
 import com.spotify.oauth2.utils.DataLoader;
 import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static com.spotify.oauth2.utils.FakerUtils.generateDescription;
 import static com.spotify.oauth2.utils.FakerUtils.generateName;
@@ -35,39 +31,6 @@ public class PlaylistTests extends BaseTest {
 
 
     }
-    @Step
-    public CurrentUserPlaylist currentUserPlaylistBuilder(int limit, int offset, List<Item> items){
-        return  CurrentUserPlaylist.builder().
-                limit(limit).
-                offset(offset).
-                items(items).
-                build();
-//        Playlist playlist = new Playlist();
-//        playlist.setName(name);
-//        playlist.setDescription(description);
-//        playlist.set_public(_public);
-//        return  playlist;
-
-
-    }
-    @Step
-    public void printItemDetails(CurrentUserPlaylist currentUserPlaylist, String name, Boolean collaborative, String description) {
-        for (Item item : currentUserPlaylist.getItems()) {
-             name = item.getName();
-            collaborative = item.getCollaborative();
-            description = item.getDescription();
-        }
-    }
-
-    @Step
-    public void assertCurrentUserPlaylistEqual(CurrentUserPlaylist responseCurrentUserPlaylist, CurrentUserPlaylist requestCurrentUserPlaylist) {
-        assertThat(responseCurrentUserPlaylist.getLimit(), equalTo(requestCurrentUserPlaylist.getLimit()));
-        assertThat(responseCurrentUserPlaylist.getOffset(), equalTo(requestCurrentUserPlaylist.getOffset()));
-        assertThat(responseCurrentUserPlaylist.getItems(), equalTo(requestCurrentUserPlaylist.getItems()));
-
-
-    }
-
     @Step
     public void assertPlaylistEqual(Playlist responsePlaylist, Playlist requestplaylist) {
         assertThat(responsePlaylist.getName(), equalTo(requestplaylist.getName()));
@@ -149,17 +112,6 @@ public class PlaylistTests extends BaseTest {
 //        Error error = response.as(Error.class);
 //        assertThat(error.getError().getStatus(), equalTo(401));
 //        assertThat(error.getError().getMessage(), equalTo("Invalid access token"));
-
-    }
-
-
-    @Test
-    public void GetCurrentUserPlayList() {
-        CurrentUserPlaylist requestcurrentuserplaylist = currentUserPlaylistBuilder(1,0,"");
-
-        Response response = PlaylistApi.get(DataLoader.getInstance().getPlaylistId());
-        assertStatusCode(response.statusCode(), StatusCode.CODE_200.getCode());
-        assertCurrentUserPlaylistEqual(response.as(CurrentUserPlaylist.class),requestcurrentuserplaylist);
 
     }
 }
